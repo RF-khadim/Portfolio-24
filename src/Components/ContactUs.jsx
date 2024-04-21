@@ -1,18 +1,37 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useFormik } from 'formik';
+import emailjs from 'emailjs-com';
+
+const serviceID = import.meta.env.VITE_SERVICE_ID;
+const templateID =import.meta.env.VITE_TEMPLATE_ID;
+const publicKey = import.meta.env.VITE_PUBLIC_KEY;
 
 const initialValues = {
     name: "",
     email: "",
     contactNum: "",
-    message:"",
+    message: "",
 };
 
 const ContactUs = () => {
-    const { values, errors, handleBlur, handleSubmit, handleChange } = useFormik({
+    const formRef = useRef(null);
+
+    const { values, errors, handleBlur, handleSubmit, handleChange, resetForm, isSubmitting } = useFormik({
         initialValues: initialValues,
-        onSubmit: (values) => {
-            console.log(values); // Logging form values correctly
+        onSubmit: (values, { resetForm }) => {
+            emailjs.send(serviceID, templateID, {
+                from_name:values.name,
+                message: values.message,
+                email:values.email,
+                to_name:"Arif Khadim"
+            },publicKey)
+                .then((response) => {
+                    console.log('SUCCESS!', response.status, response.text);
+                    
+                  },
+                  (error) => {
+                    console.log('FAILED...', error);
+                  },);
         }
     });
 
@@ -20,7 +39,7 @@ const ContactUs = () => {
         <div id='contact' className='w-full h-screen bg-gradient-to-r from-[#202020] to-[#34444c] flex items-center py-6 md:py-12 flex-col gap-10'>
             <h1 className='text-gradient text-2xl md:text-4xl font-bold mx-auto w-fit border-cyan-500 border-b-[3px] pb-2 mt-12'>Contact Us</h1>
             <div className='pt-24px w-[400px] md:w-[540px] h-[590px] md:h-[630px] px-12 py-4 bg-gradient-to-b from-cyan-800/10 to-emerald-600/60 shadow-cyan-500/30 shadow-md rounded-md'>
-                <form action='https://getform.io/f/rbeqezlb' className='flex flex-col items-center' onSubmit={handleSubmit}>
+                <form ref={formRef} onSubmit={handleSubmit} className='flex flex-col items-center' id='contact-form'>
                     <input
                         name='name'
                         autoComplete='off'
@@ -51,17 +70,24 @@ const ContactUs = () => {
                         type="text"
                         placeholder='Enter Your Contact Number'
                     />
-                    <textarea value={values.text}
+                    <textarea
                         name="message"
-                        cols="30"
-                        rows="10"
-                        className='bg-transparent border-cyan-500 border-2 outline-none rounded-md py-1 md:py-2 my-3 pl-3 text-lg text-white resize-none w-max'
+                        value={values.message}
+                        cols={5}
+                        rows={5}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        className='bg-transparent border-cyan-500 border-2 outline-none rounded-md py-1 md:py-2 my-3 pl-3 text-lg text-white resize-none w-full'
+
+                        placeholder='Enter Your Message'
                     ></textarea>
                     <button
+                        // disabled={isSubmitting}
                         type='submit'
                         className='bg-cyan-500 w-full rounded-full py-2 my-3 hover:bg-gradient-to-t from-cyan-600/60  to-emerald-900/60 text-white font-semibold transition duration-300 ease-in-out md:text-lg text-base'
                     >
-                        Submit
+                        {/* {isSubmitting ? "Please wait" : "Send Email"} */}
+                        Send Email
                     </button>
                 </form>
             </div>

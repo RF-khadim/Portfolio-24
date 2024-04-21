@@ -30,7 +30,7 @@ const Hero = () => {
                     <div className=' flex items-center justify-evenly w-72 md:w-[360px] mt-8 text-2xl md:text-4xl text-cyan-500'>
                         <a href="https://www.facebook.com/profile.php?id=100028771893989&mibextid=ZbWKwL">
                             <AiFillFacebook className='hover:text-white transition-all ease-in-out duration-300 cursor-pointer' /></a>
-                        <a href="">
+                        <a href="https://github.com/RF-khadim">
                             <AiFillGithub className='hover:text-white transition-all ease-in-out duration-300 cursor-pointer' /></a>
                         <a href="https://www.instagram.com/mohammadarif517?igsh=Yzd1eG5sb3BqM214">
                             <AiFillInstagram className='hover:text-white transition-all ease-in-out duration-300 cursor-pointer' /></a>
@@ -39,8 +39,7 @@ const Hero = () => {
                         <a href={`mailto:${email}`} target="_blank" rel="noopener noreferrer">
                             <AiFillGoogleCircle className='hover:text-white transition-all ease-in-out duration-300 cursor-pointer' /></a>
 
-                        <a href="">
-                            <BsTwitterX className='hover:text-white transition-all ease-in-out duration-300 cursor-pointer' /></a>
+                        
                     </div>
 
                     <a href={MyCV} download="resume.pdf" className='bg-gradient-to-r from-cyan-800 to-emerald-600 mt-4 md:mt-12 px-16 md:px-20 md:py-2 text-white font-semibold text-lg rounded-full py-1 md:text-xl cursor-pointer' >Download CV</a>

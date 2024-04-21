@@ -21,10 +21,7 @@ const Footer = () => {
                     <AiFillLinkedin className='hover:bg-white hover:text-cyan-500 rounded-full transition-all duration-300 cursor-pointer' />
                 </a>
 
-                <a href="">
-                    <BsTwitterX className='hover:bg-white hover:text-cyan-500 rounded-full transition-all duration-300 cursor-pointer' />
-                </a>
-
+                
                 <a href={`mailto:${email}`} target="_blank" rel="noopener noreferrer">
                     <AiFillGoogleCircle className='hover:bg-white hover:text-cyan-500 rounded-full transition-all duration-300 cursor-pointer' />
                 </a>
