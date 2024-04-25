@@ -7,7 +7,7 @@ const email = 'khadimarif52@gmail.com'
 const Footer = () => {
     return (
         <div className='w-full h-28 z-10 bg-gradient-to-r from-cyan-800 to-emerald-600 bottom-0 left-0 flex justify-around items-center'>
-            <div className='tex-3xl md:text-4xl text-white flex gap-4 w-auto'>
+            <div className='tex-3xl md:text-4xl text-white flex md:gap-4 gap-2 w-auto'>
                 <a href="https://www.facebook.com/profile.php?id=100028771893989&mibextid=ZbWKwL">
                     <AiFillFacebook className='hover:bg-white hover:text-cyan-500 rounded-full transition-all duration-300 cursor-pointer' />
                 </a>
@@ -26,7 +26,7 @@ const Footer = () => {
                     <AiFillGoogleCircle className='hover:bg-white hover:text-cyan-500 rounded-full transition-all duration-300 cursor-pointer' />
                 </a>
             </div>
-            <div className='flex items-center justify-center text-sm md:text-xl font-extralight text-white'>
+            <div className='flex items-center justify-center text-xs text-center md:text-xl font-extralight text-white'>
                 <p>&copy;  2024 ArifKhadim. All rights reserved.</p>
             </div>
 

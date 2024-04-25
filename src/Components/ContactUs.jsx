@@ -1,9 +1,10 @@
 import React, { useRef } from 'react';
 import { useFormik } from 'formik';
+import * as yup from 'yup'; // Import yup
 import emailjs from 'emailjs-com';
 
 const serviceID = import.meta.env.VITE_SERVICE_ID;
-const templateID =import.meta.env.VITE_TEMPLATE_ID;
+const templateID = import.meta.env.VITE_TEMPLATE_ID;
 const publicKey = import.meta.env.VITE_PUBLIC_KEY;
 
 const initialValues = {
@@ -16,29 +17,38 @@ const initialValues = {
 const ContactUs = () => {
     const formRef = useRef(null);
 
-    const { values, errors, handleBlur, handleSubmit, handleChange, resetForm, isSubmitting } = useFormik({
+    const validationSchema = yup.object().shape({
+        name: yup.string().required('Name is required'),
+        email: yup.string().email('Invalid email').required('Email is required'),
+        contactNum: yup.number().required('Contact Number is required'),
+        message: yup.string().required('Message is required'),
+    });
+
+
+    const { values, errors, handleBlur, handleSubmit, handleChange } = useFormik({
         initialValues: initialValues,
+        validationSchema: validationSchema,
         onSubmit: (values, { resetForm }) => {
             emailjs.send(serviceID, templateID, {
-                from_name:values.name,
+                from_name: values.name,
                 message: values.message,
-                email:values.email,
-                to_name:"Arif Khadim"
-            },publicKey)
+                email: values.email,
+                to_name: "Arif Khadim"
+            }, publicKey)
                 .then((response) => {
                     console.log('SUCCESS!', response.status, response.text);
-                    
-                  },
-                  (error) => {
-                    console.log('FAILED...', error);
-                  },);
+
+                },
+                    (error) => {
+                        console.log('FAILED...', error);
+                    });
         }
     });
 
     return (
         <div id='contact' className='w-full h-screen bg-gradient-to-r from-[#202020] to-[#34444c] flex items-center py-6 md:py-12 flex-col gap-10'>
             <h1 className='text-gradient text-2xl md:text-4xl font-bold mx-auto w-fit border-cyan-500 border-b-[3px] pb-2 mt-12'>Contact Us</h1>
-            <div className='pt-24px w-[400px] md:w-[540px] h-[590px] md:h-[630px] px-12 py-4 bg-gradient-to-b from-cyan-800/10 to-emerald-600/60 shadow-cyan-500/30 shadow-md rounded-md'>
+            <div className='pt-24px w-[340px] md:w-[540px] h-[590px] md:h-[630px] px-12 py-4 bg-gradient-to-b from-cyan-800/10 to-emerald-600/60 shadow-cyan-500/30 shadow-md rounded-md'>
                 <form ref={formRef} onSubmit={handleSubmit} className='flex flex-col items-center' id='contact-form'>
                     <input
                         name='name'
@@ -50,6 +60,7 @@ const ContactUs = () => {
                         type="text"
                         placeholder='Enter Your name'
                     />
+                    {errors.name && <div className="text-cyan-500">{errors.name}</div>}
                     <input
                         name='email'
                         autoComplete='off'
@@ -60,6 +71,7 @@ const ContactUs = () => {
                         type="email"
                         placeholder='Enter Your Email'
                     />
+                    {errors.email && <div className="text-cyan-500">{errors.email}</div>}
                     <input
                         name='contactNum'
                         autoComplete='off'
@@ -70,6 +82,7 @@ const ContactUs = () => {
                         type="text"
                         placeholder='Enter Your Contact Number'
                     />
+                    {errors.contactNum && <div className="text-cyan-500">{errors.contactNum}</div>}
                     <textarea
                         name="message"
                         value={values.message}
@@ -81,6 +94,7 @@ const ContactUs = () => {
 
                         placeholder='Enter Your Message'
                     ></textarea>
+                    {errors.message && <div className="text-cyan-500">{errors.message}</div>}
                     <button
                         // disabled={isSubmitting}
                         type='submit'

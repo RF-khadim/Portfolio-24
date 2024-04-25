@@ -10,9 +10,9 @@ const Navbar = () => {
     }
 
     return (
-        <div className="w-full z-40 absolute top-0">
-            <div className='bg-gradient-to-r from-cyan-800 to-emerald-600 w-full h-20 fixed'>
-                <div className='w-full px-4 lg:px-10 h-full md:px-7 flex items-center justify-between text-white'>
+        <div className="z-40 absolute top-0">
+            <div className='bg-gradient-to-r from-cyan-800 to-emerald-600 w-full h-20 fixed px-10'>
+                <div className='lg:px-10 h-full md:px-2 flex items-center justify-between text-white'>
                     <h1 className='text-2xl font-bold'>Mohammad Arif</h1>
                     <ul className='justify-center items-center lg:gap-10 md:gap-7 pr-10 font-medium text-base sm:hidden md:flex hidden'>
 
@@ -36,6 +36,7 @@ const Navbar = () => {
                     </ul>
                     <div onClick={handleNav} className='md:hidden sm:block'>
                         {nav ? <AiOutlineMenu className="text-2xl font-extrabold" /> : <AiOutlineClose className="text-2xl font-extrabold" />}
+
                     </div>
 
 
