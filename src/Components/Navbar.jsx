@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 
 const Navbar = () => {
@@ -16,7 +16,7 @@ const Navbar = () => {
         return () => {
             document.removeEventListener("mousedown", handleClickOutside);
         };
-    }, [navRef]);
+    }, []);
 
     const handleNavToggle = () => {
         setNav(!nav);
@@ -32,13 +32,13 @@ const Navbar = () => {
                 <div className='lg:px-10 h-full md:px-2 flex items-center justify-between text-white'>
                     <h1 className='text-2xl font-bold'>Mohammad Arif</h1>
                     <ul className='justify-center items-center lg:gap-10 md:gap-7 pr-10 font-medium text-base sm:hidden md:flex hidden'>
-                        <li><a onClick={handleLinkClick} className='w-[100px] py-2 hover:bg-emerald-400 text-center rounded transition-all ease-in-out duration-300' href="#hero">Home</a></li>
-                        <li><a onClick={handleLinkClick} className='w-[100px] py-2 hover:bg-emerald-400 text-center rounded transition-all ease-in-out duration-300' href="#about">About</a></li>
-                        <li><a onClick={handleLinkClick} className='w-[100px] py-2 hover:bg-emerald-400 text-center rounded transition-all ease-in-out duration-300' href="#projects">Projects</a></li>
-                        <li><a onClick={handleLinkClick} className='w-[100px] py-2 hover:bg-emerald-400 text-center rounded transition-all ease-in-out duration-300' href="#contact">Contact</a></li>
+                        <li><a  className='w-[100px] px-8 py-2 hover:bg-emerald-400 text-center rounded transition-all ease-in-out duration-300' href="#hero">Home</a></li>
+                        <li><a  className='w-[100px] px-8 py-2 hover:bg-emerald-400 text-center rounded transition-all ease-in-out duration-300' href="#about">About</a></li>
+                        <li><a  className='w-[100px] px-8 py-2 hover:bg-emerald-400 text-center rounded transition-all ease-in-out duration-300' href="#projects">Projects</a></li>
+                        <li><a  className='w-[100px]  px-8 py-2 hover:bg-emerald-400 text-center rounded transition-all ease-in-out duration-300' href="#contact">Contact</a></li>
                     </ul>
                     <div onClick={handleNavToggle} className='md:hidden sm:block'>
-                        {nav ? <AiOutlineMenu className="text-2xl font-extrabold" /> : <AiOutlineClose className="text-2xl font-extrabold" />}
+                        {nav ?   <AiOutlineClose className="text-2xl font-extrabold" />:<AiOutlineMenu className="text-2xl font-extrabold" />}
                     </div>
                 </div>
             </div>
