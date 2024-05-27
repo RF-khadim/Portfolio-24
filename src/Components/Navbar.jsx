@@ -27,7 +27,7 @@ const Navbar = () => {
     };
 
     return (
-        <div className="z-40 absolute top-0">
+        <div className="z-40 absolute top-0 w-full">
             <div className='bg-gradient-to-r from-cyan-800 to-emerald-600 w-full h-20 fixed px-10'>
                 <div className='lg:px-10 h-full md:px-2 flex items-center justify-between text-white'>
                     <h1 className='text-2xl font-bold'>Mohammad Arif</h1>
@@ -42,7 +42,7 @@ const Navbar = () => {
                     </div>
                 </div>
             </div>
-            <div ref={navRef} className={`top-0 left-0 w-[60%] bg-gradient-to-t from-cyan-800 to-emerald-600  flex items-center h-[100%] text-white flex-col md:hidden sm:flex transition-all duration-300 fixed ${nav ? 'left-0' : '-left-full'}`}>
+            <div ref={navRef} className={`top-0 left-0 w-[70%] bg-gradient-to-t from-cyan-800 to-emerald-600 flex items-center h-[100%] text-white flex-col md:hidden sm:flex transition-all duration-300 fixed ${nav ? 'left-0' : '-left-full'}`}>
                 <h1 className='text-2xl font-bold mt-20'>Mohammad Arif</h1>
                 <div className='flex justify-center items-center font-medium flex-col mt-20 text-lg gap-6'>
                     <div><a onClick={handleLinkClick} href="#hero" className='w-[100px] py-2 hover:bg-emerald-400 text-center rounded transition-all ease-in-out duration-300 mt-4 px-7'>Home</a></div>
