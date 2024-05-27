@@ -56,7 +56,7 @@ const ContactUs = () => {
                         value={values.name}
                         onChange={handleChange}
                         onBlur={handleBlur}
-                        className='bg-transparent border-cyan-500 border-2 outline-none rounded-md w-full py-1 md:py-2 my-3 pl-3 text-lg text-white'
+                        className='bg-transparent border-cyan-500 border-2 outline-none rounded-md w-full py-1 md:py-2 my-3 pl-3 lg:text-lg md:text-sm text-white'
                         type="text"
                         placeholder='Enter Your name'
                     />
@@ -67,7 +67,7 @@ const ContactUs = () => {
                         value={values.email}
                         onChange={handleChange}
                         onBlur={handleBlur}
-                        className='bg-transparent border-cyan-500 border-2 outline-none rounded-md w-full py-1 md:py-2 my-3 pl-3 text-lg text-white'
+                        className='bg-transparent border-cyan-500 border-2 outline-none rounded-md w-full py-1 md:py-2 my-3 pl-3 lg:text-lg md:text-sm text-white'
                         type="email"
                         placeholder='Enter Your Email'
                     />
@@ -78,7 +78,7 @@ const ContactUs = () => {
                         value={values.contactNum}
                         onChange={handleChange}
                         onBlur={handleBlur}
-                        className='bg-transparent border-cyan-500 border-2 outline-none rounded-md w-full py-1 md:py-2 my-3 pl-3 text-lg text-white'
+                        className='bg-transparent border-cyan-500 border-2 outline-none rounded-md w-full py-1 md:py-2 my-3 pl-3 lg:text-lg md:text-sm text-white'
                         type="text"
                         placeholder='Enter Your Contact Number'
                     />
@@ -90,11 +90,11 @@ const ContactUs = () => {
                         rows={5}
                         onChange={handleChange}
                         onBlur={handleBlur}
-                        className='bg-transparent border-cyan-500 border-2 outline-none rounded-md py-1 md:py-2 my-3 pl-3 text-lg text-white resize-none w-full'
+                        className='bg-transparent border-cyan-500 border-2 outline-none rounded-md w-full py-1 md:py-2 my-3 pl-3 lg:text-lg md:text-sm text-white resize-none'
 
                         placeholder='Enter Your Message'
                     ></textarea>
-                    {errors.message && <div className="text-cyan-500">{errors.message}</div>}
+                    {errors.message && <div className="text-cyan-500 lg:text-lg md:text-sm">{errors.message}</div>}
                     <button
                         // disabled={isSubmitting}
                         type='submit'
