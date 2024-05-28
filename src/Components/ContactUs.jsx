@@ -47,7 +47,7 @@ const ContactUs = () => {
 
     return (
         <div id='contact' className='w-full h-screen bg-gradient-to-r from-[#202020] to-[#34444c] flex items-center py-6 md:py-12 flex-col gap-10'>
-            <h1 className='text-gradient text-2xl md:text-4xl font-bold mx-auto w-fit border-cyan-500 border-b-[3px] pb-2 mt-12'>Contact Us</h1>
+            <h1 className='text-gradient text-2xl md:text-4xl font-bold mx-auto w-fit border-cyan-500 border-b-[3px] pb-2'>Contact Us</h1>
             <div className='pt-24px w-[340px] md:w-[540px] h-[590px] md:h-[630px] px-12 py-4 bg-gradient-to-b from-cyan-800/10 to-emerald-600/60 shadow-cyan-500/30 shadow-md rounded-md'>
                 <form ref={formRef} onSubmit={handleSubmit} className='flex flex-col items-center' id='contact-form'>
                     <input
